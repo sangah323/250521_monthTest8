@@ -10,9 +10,12 @@ contract DinoNFT is ERC721 {
     uint256 private _totalSupply = 0; // 현재 발행된 NFT 수
     uint256[] private _allTokenIds; // 발생된 총 NFT tokenID 모음
 
-    constructor(string memory _name, string memory _symbol) ERC721 (_name, _symbol) {
+    constructor(
+        string memory _name,
+        string memory _symbol
+    ) ERC721(_name, _symbol) {
         owner = msg.sender;
-    } 
+    }
 
     // NFT 발행, Only owner, 사용자의 입력값 없이 totalSupply 기준 tokenID 순서대로 발행
     function minting() public {
@@ -28,12 +31,16 @@ contract DinoNFT is ERC721 {
     }
 
     // NFT 구매
-    function purchase (uint256 tokenId) public payable {
+    function purchase(uint256 tokenId) public payable {
         address currentOwner = ownerOf(tokenId); // 현재 NFT 소유자
         require(msg.sender != currentOwner, "You are already own this NFT"); // 소유자와 구매자가 같을 경우 방지
 
-        // 해당 NFT에 대한 권한 위임을 받았는지 확인
-        require(getApproved(tokenId) == address(this) || isApprovedForAll(currentOwner, address(this)), "Not approved for transfer");
+        // 해당 NFT에 대한 권한 위임을 받았는지 확인, address(this) => 스마트컨트렉트
+        require(
+            getApproved(tokenId) == address(this) ||
+                isApprovedForAll(currentOwner, address(this)),
+            "Not approved for transfer"
+        );
 
         // 구매 가격 확인, 1이더
         require(msg.value == 1 ether, "Insufficient payment");
@@ -46,14 +53,20 @@ contract DinoNFT is ERC721 {
     }
 
     // tokenURI
-    function tokenURI(uint256 tokenId) public pure override returns (string memory) {
+    function tokenURI(
+        uint256 tokenId
+    ) public pure override returns (string memory) {
         string memory baseURI = _baseURI();
-        return bytes(baseURI).length > 0 ? string.concat(baseURI, tokenId.toString(), ".json") : "";
+        return
+            bytes(baseURI).length > 0
+                ? string.concat(baseURI, tokenId.toString(), ".json")
+                : "";
     }
 
     // baseURI, DinoMetaData
     function _baseURI() internal pure override returns (string memory) {
-        return "";
+        return
+            "ipfs://bafybeiahvazhhdiivmpquw4kd363zlynl5soly45pte5dyzmqdnt5zcfw4/";
     }
 
     // 사용자가 소유하고 있는 모든 NFT

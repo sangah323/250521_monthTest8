@@ -11,6 +11,8 @@ package-lock.json
 
 # production
 /build
+/src/contracts/
+src/contracts/
 
 # misc
 .DS_Store

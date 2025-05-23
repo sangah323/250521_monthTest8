@@ -1,7 +1,9 @@
+import DinoNFT from "./DinoNFT";
+
 function App() {
   return (
     <div className="App">
-     <h1></h1>
+      <DinoNFT />
     </div>
   );
 }
