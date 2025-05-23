@@ -8,7 +8,7 @@ declare global {
 }
 
 const getContract = () => {
-  const DinoNftAddress = "0x8210B77C529F9F36FE062Be6C35c977d116b221E";
+  const DinoNftAddress = "0xA7318e489D8F0a89F9FCC08DB5C2d129cc2ca174";
   const web3 = new Web3(window.ethereum);
 
   const DinoNftContract = new web3.eth.Contract(
