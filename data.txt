@@ -1,0 +1,20 @@
+kairos 배포
+    - CA 주소
+        : 0xA7318e489D8F0a89F9FCC08DB5C2d129cc2ca174
+    - kairos testnet
+        : https://kairos.kaiascan.io/address/0xa7318e489d8f0a89f9fcc08db5c2d129cc2ca174?tabId=txList&page=1
+
+
+1. 필요한 모듈 설치 및 환경 구성
+
+2. 민팅, 사용자 입력 없이 tokenId 순서대로
+
+3. 판매 버튼 구현
+
+4. 구매하기, NFT 소유권 이전 확인
+
+5. 모두 판매 버튼 구현
+
+6. OpenSea에서 소유권 이전 확인
+
+7. 권한이 없는 사용자가 NFT 구매 시 실패
