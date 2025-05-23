@@ -1,6 +1,5 @@
-import Web3 from 'web3';
-import { AbiItem } from 'web3-utils';
-import dinoNFTABI from "../contracts/DinoNFT.json"
+import Web3 from "web3";
+import DinoNFTABI from "../contracts/DinoNFT.json";
 
 declare global {
   interface Window {
@@ -9,17 +8,17 @@ declare global {
 }
 
 const getContract = () => {
-  const dinoNftAddress = '0x57f0D6e5C23d4a68C3061547cAfead1a37de711d';
+  const DinoNftAddress = "0x8210B77C529F9F36FE062Be6C35c977d116b221E";
   const web3 = new Web3(window.ethereum);
 
-  const dinoNftContract = new web3.eth.Contract(
-    dinoNFTABI.abi as AbiItem[],
-    dinoNftAddress
+  const DinoNftContract = new web3.eth.Contract(
+    DinoNFTABI.abi as any[],
+    DinoNftAddress
   );
 
   return {
-    dinoNftAddress,
-    dinoNftContract,
+    DinoNftAddress,
+    DinoNftContract,
   };
 };
 
